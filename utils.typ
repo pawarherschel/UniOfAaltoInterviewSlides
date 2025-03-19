@@ -34,6 +34,7 @@
   fit: "contain",
   height: 1fr,
   width: auto,
+  gap: 0.65em,
   caption,
 ) = {
   if type(path) != type(str) {
@@ -46,6 +47,7 @@
         width: width,
       ),
       caption: [#caption #filepath(path)],
+      gap: gap,
     )
   }
 }

@@ -18,7 +18,6 @@
   title: title + " - " + subtitle,
   date: date,
 )
-#set raw(lang: "typc")
 
 #show: theme.with(
   aspect-ratio: "16-9",
@@ -85,6 +84,23 @@
 
 #title-slide()
 
+= Hack so background images are preloaded
+#{
+  let cols = 11
+  let images = (
+    range(1, 35)
+      .map(it => (
+        "resources/backgrounds/" + str(it) + ".jpg"
+      ))
+      .map(path => image(path))
+  )
+
+  grid(
+    columns: cols,
+    ..images
+  )
+}
+
 = Outline
 #slide(config: (freeze-slide-counter: true))[
   #set page(footer: none)
@@ -107,16 +123,90 @@
 == Bevy Pong
 #lorem(5)
 == Godot Games
-#lorem(5)
+#{
+  let godot-games = (
+    (
+      (
+        name: "pong.png",
+        caption: [Pong: It starts here],
+      ),
+      (
+        name: "magical_marshmellow.png",
+        caption: [Magical Marshmellow: made my first sfx],
+      ),
+      (
+        name: "game_of_life.png",
+        caption: [Conway's Game of Life: I #emoji.heart Maths],
+      ),
+      (
+        name: "meme_invaders.png",
+        caption: [Meme Invaders: First from scratch game],
+      ),
+      (
+        name: "minesweeper.png",
+        caption: [Made the sprites],
+      ),
+      (
+        name: "pop_the_lock.png",
+        caption: [Used BFXR for SFX],
+      ),
+    )
+      .map(it => {
+        let (name, caption) = it
+        (
+          path: ("resources/godot/" + name),
+          caption: caption,
+        )
+      })
+      .map(it => {
+        let (path, caption) = it
+        figure-image(
+          path: path,
+          height: 1fr,
+          width: 100%,
+          gap: 0.2em,
+          caption,
+        )
+      })
+      .map(cell => block(
+        height: 50%,
+        width: 100%,
+        inset: (y: 0.2em),
+        align(
+          center + horizon,
+          cell,
+        ),
+      ))
+  )
 
-= Artsy Projects
-#lorem(5)
-== Krita Palette Creator
-#lorem(5)
-== Ray Tracing in Rust
-#lorem(5)
-== Kait
-#lorem(5)
+  show text: set text(size: 0.55em)
+  show grid.cell: set grid.cell(breakable: false)
+  block(height: 100%, width: 100%)[
+    #grid(
+      rows: 3, columns: 3,
+      ..godot-games
+    )
+  ]
+}
+// #stack(
+//   dir: ttb,
+//   for row in godot-games {
+//     stack(
+//       dir: ltr,
+//       for img in row {
+//         rect(img, stroke: white)
+//       },
+//     )
+//   },
+// )
+// = Artsy Projects
+// #lorem(5)
+// == Krita Palette Creator
+// #lorem(5)
+// == Ray Tracing in Rust
+// #lorem(5)
+// == Kait
+// #lorem(5)
 
 == Pixel Art
 #block(height: 100%, width: 100%)[
