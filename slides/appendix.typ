@@ -10,12 +10,20 @@
 ]
 == List of Images
 #align(top + left)[
+  #set enum(tight: true)
+  #set text(size: 0.9em)
   #context {
     for figure in query(figure.where(kind: image)) {
       let caption = figure.caption
       let page = figure.location().page()
 
-      text(size: 0.9em)[- #caption #h(1fr) #link(figure.location())[#page]]
+      [
+        - #[
+            #box(caption)
+            #box(width: 1fr, repeat(gap: 1.5pt)[.])
+            #text(size: 1.5em, link(figure.location())[#page])
+          ]
+      ]
     }
   }
 ]
@@ -23,12 +31,20 @@
 == List of Tables
 
 #align(top + left)[
+  #set text(0.9em)
+  #set enum(tight: true)
   #context {
     for figure in query(figure.where(kind: table)) {
       let caption = figure.caption
       let page = figure.location().page()
 
-      text(size: 0.9em)[- #caption #h(1fr) #link(figure.location())[#page]]
+      [
+        - #[
+            #box(caption)
+            #box(width: 1fr, repeat(gap: 1.5pt)[.])
+            #text(size: 1.5em, link(figure.location())[#page])
+          ]
+      ]
     }
   }
 ]

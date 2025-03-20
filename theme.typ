@@ -47,7 +47,8 @@
     set std.align(top)
     show: components.cell.with(fill: self.colors.secondary, inset: 1em)
     set std.align(horizon)
-    set text(fill: self.colors.neutral-lightest, weight: "medium", size: 1.2em)
+    import "utils.typ": alternative-font
+    set text(font: alternative-font, fill: self.colors.neutral-lightest, weight: "medium", size: 1.2em)
     components.left-and-right(
       {
         if title != auto {
@@ -222,7 +223,8 @@
         components.progress-bar(height: 2pt, self.colors.primary, self.colors.primary-light),
       ),
     )
-    text(self.colors.secondary, body)
+    import "utils.typ": alternative-font, alert-secondary-color
+    text(font: alternative-font, alert-secondary-color, body)
   }
   self = utils.merge-dicts(
     self,
@@ -355,5 +357,7 @@
     ..args,
   )
 
+
   body
 }
+

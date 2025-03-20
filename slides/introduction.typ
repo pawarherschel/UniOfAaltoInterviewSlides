@@ -11,10 +11,7 @@
   align: center,
   column-gutter: 2%,
   block(height: 1fr)[
-    #figure-image(
-      path: "resources/me.png",
-      alt: "image of Herschel Pravin Pawar",
-    )[Image of me]
+    #figure-image(path: "resources/me.png")[Image of me]
   ],
   align(left + horizon)[
     #text(size: 27pt)[
@@ -26,7 +23,7 @@
         align(left + horizon)[
           #alert[Herschel Pravin Pawar]
           #linebreak()
-          #text(font: creative-font)[#link("https://sakurakat.systems")[sakurakat.systems] <links>]
+          #text(font: alternative-font)[#link("https://sakurakat.systems")[sakurakat.systems] <links>]
         ],
       )
     ]
@@ -44,9 +41,7 @@
           column-gutter: 2%,
           image("../resources/cc.logo.svg", height: 1em),
           text(size: 0.8em)[
-            #[#link("https://github.com/pawarherschel/UniOfAaltoInterviewSlides")[
-                GitHub:pawarherschel/UniOfAaltoInterviewSlides
-              ] <links>]
+            #github-link(repo: "UniOfAaltoInterviewSlides")
           ],
         )
       ]
