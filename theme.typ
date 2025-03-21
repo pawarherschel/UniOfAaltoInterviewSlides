@@ -226,9 +226,13 @@
     ]
     import "utils.typ": alternative-font, alert-secondary-color
     block(
-      align(top, text(font: alternative-font, alert-secondary-color, body)),
-      height: 1fr,
-      width: 100%,
+      align(top, text(font: alternative-font, alert-secondary-color, body, size: 1.3em)),
+      ..if body != none or body != [] or body != "" or body != " " {
+        (
+          height: 1fr,
+          width: 100%,
+        )
+      },
     )
   }
   self = utils.merge-dicts(
