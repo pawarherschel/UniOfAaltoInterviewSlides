@@ -85,7 +85,7 @@
 #{
   let cols = 13
   let images = (
-    range(1, 57)
+    range(1, 45)
       .map(it => (
         "resources/backgrounds/" + str(it) + ".jpg"
       ))
@@ -835,8 +835,6 @@ Just a quick overview :3
     - #raw("Result<T, E>", lang: "rust") and #raw("Option<T>", lang: "rust") FTW
   - No implicit conversion
 ]
-
-#bg-img-ctr.update(0)
 
 = Appendix
 #pagebreak()

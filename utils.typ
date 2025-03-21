@@ -1,5 +1,3 @@
-#let t = state("t", false)
-
 // taken from catppuccin mocha
 #let text-color = rgb(206, 215, 244) // text
 #let alert-primary-color = rgb(247, 192, 231) // pink
