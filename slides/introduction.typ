@@ -14,7 +14,7 @@
     #figure-image(path: "resources/me.png")[Image of me]
   ],
   align(left + horizon)[
-    #text(size: 27pt)[
+    #text(size: 1.8em)[
       #grid(
         rows: 1,
         columns: 2,
@@ -28,21 +28,16 @@
       )
     ]
     #align(bottom)[
-      #text(size: 1em)[
-        #par(justify: true)[
-          #text(size: 0.695em)[
-            Everything you see in this presentation --- scripts, links, and images --- are a part of a Typst document available freely on GitHub under a public domain licence.
-          ]
-        ]
+      #par(justify: true)[
+        Everything you see in this presentation --- scripts, links, and images --- are a part of a Typst document available freely on GitHub under a public domain licence.
+      ]
+      #text(size: 0.95em)[
         #grid(
           rows: 1,
           columns: 2,
           align: left + horizon,
           column-gutter: 2%,
-          image("../resources/cc.logo.svg", height: 1em),
-          text(size: 0.8em)[
-            #github-link(repo: "UniOfAaltoInterviewSlides")
-          ],
+          image("../resources/cc.logo.svg", height: 1em), github-link(repo: "UniOfAaltoInterviewSlides"),
         )
       ]
     ]

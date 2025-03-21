@@ -1,9 +1,8 @@
 #import "../../utils.typ": *
 
-== Cosmos Conquerors<gd:cc>
+== Cosmos Conquerors <gd:cc>
 
 #columns(2)[
-  #set text(size: 0.9em)
   #block(
     height: 1fr,
     width: 100%,
@@ -13,10 +12,10 @@
   #colbreak()
 
   #block(height: 1fr)[
-    === Key Contributions
+    === Key Points
     - Solo Development
 
-    === Technologies
+    === Technologies Used
     - Godot
 
     === Links
@@ -32,7 +31,6 @@
 
 === Increasing the difficulty
 #block(height: 1fr, width: 100%)[
-  #set text(size: 0.9em)
   #columns(2)[
     #figure-image(path: "../../resources/cosmos-conquerors/invaders-shooting.gif")[All invaders shooting]
     #colbreak()

@@ -1,3 +1,5 @@
+#let t = state("t", false)
+
 // taken from catppuccin mocha
 #let text-color = rgb(206, 215, 244) // text
 #let alert-primary-color = rgb(247, 192, 231) // pink
@@ -16,6 +18,55 @@
 
 #let default-font = "Atkinson Hyperlegible"
 #let alternative-font = "Nekonium"
+
+
+// src: https://sitandr.github.io/typst-examples-book/book/typstonomicon/extract_plain_text.html
+// original author: ntjess
+#let stringify-by-func(it) = {
+  let func = it.func()
+  return if func in (parbreak, pagebreak, linebreak) {
+    "\n"
+  } else if func == smartquote {
+    if it.double { "\"" } else { "'" } // "
+  } else if it.fields() == (:) {
+    // a fieldless element is either specially represented (and caught earlier) or doesn't have text
+    ""
+  } else {
+    panic("Not sure how to handle type `" + repr(func) + "`")
+  }
+}
+
+#let plain-text(it) = {
+  return if it == none { "" } else if type(it) == str {
+    it
+  } else if it == [ ] {
+    " "
+  } else if it.has("children") {
+    it.children.map(plain-text).join()
+  } else if it.has("body") {
+    plain-text(it.body)
+  } else if it.has("text") {
+    if type(it.text) == str {
+      it.text
+    } else {
+      plain-text(it.text)
+    }
+  } else {
+    // remove this to ignore all other non-text elements
+    stringify-by-func(it)
+  }
+}
+
+#context if not t.get() {
+  [
+    = gamedev: godot games <gd:gg>
+    asdf
+    = gamedev: fractured elements <gd:fe>
+    asdf
+    = gamedev: cosmos conquerors <gd:cc>
+    asdf
+  ]
+}
 
 #let show-rules(content) = {
   show heading.where(depth: 1): set heading(
@@ -47,7 +98,6 @@
   set text(font: default-font)
   show heading: set text(font: alternative-font, size: 1.5em)
 
-
   set quote(block: true)
   show quote.where(block: true): it => {
     set par(justify: true, linebreaks: "optimized")
@@ -60,11 +110,17 @@
   }
 
   show ref: it => {
-    link(it.target)[#it.element.body]
+    link(it.target)[#plain-text(it.element)]
   }
+
+  set enum(tight: true)
+
+  show math.equation: set text(font: "STIX Two Math")
+  set text(size: 0.9em)
 
   content
 }
+
 
 #let filepath(file, full-file: none) = {
   let file = file.codepoints().map(c => [#sym.wj#c]).join()
@@ -135,10 +191,17 @@
   ]
 ]
 
-#let github-link(owner: "pawarherschel", repo: str) = [
+#let github-link(owner: "pawarherschel", repo: str, preview: none) = [
+  #assert(type(repo) != type(str), message: "enter the repo name dumbass")
   #link("https://github.com/" + owner + "/" + repo)[
-    GitHub:#owner/#repo
+    #if preview == none [GitHub:#owner/#repo] else [#preview]
   ] <links>
+]
+
+#let wikipedia-link(page: str, display) = [
+  #if type(page) != type(str) {
+    [#link(page)[Wikipedia:#page => #display] <links>]
+  }
 ]
 
 
@@ -157,3 +220,4 @@
     ]
   ]
 }
+

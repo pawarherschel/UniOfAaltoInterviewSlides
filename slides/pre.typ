@@ -3,9 +3,9 @@
 
 = Hack so background images are preloaded
 #{
-  let cols = 12
+  let cols = 13
   let images = (
-    range(1, 35)
+    range(1, 57)
       .map(it => (
         "../resources/backgrounds/" + str(it) + ".jpg"
       ))

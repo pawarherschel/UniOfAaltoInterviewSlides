@@ -210,21 +210,26 @@
 #let new-section-slide(config: (:), level: 1, numbered: true, body) = touying-slide-wrapper(self => {
   let slide-body = {
     set std.align(horizon)
-    show: pad.with(20%)
-    set text(size: 1.5em)
-    stack(
-      dir: ttb,
-      spacing: 1em,
-      text(self.colors.neutral-darkest, utils.display-current-heading(level: level, numbered: numbered, style: auto)),
-      block(
-        height: 2pt,
-        width: 100%,
-        spacing: 0pt,
-        components.progress-bar(height: 2pt, self.colors.primary, self.colors.primary-light),
-      ),
-    )
+    pad(x: 20%)[
+      #set text(size: 1.5em)
+      #stack(
+        dir: ttb,
+        spacing: 1em,
+        text(self.colors.neutral-darkest, utils.display-current-heading(level: level, numbered: numbered, style: auto)),
+        block(
+          height: 2pt,
+          width: 100%,
+          spacing: 0pt,
+          components.progress-bar(height: 2pt, self.colors.primary, self.colors.primary-light),
+        ),
+      )
+    ]
     import "utils.typ": alternative-font, alert-secondary-color
-    text(font: alternative-font, alert-secondary-color, body)
+    block(
+      align(top, text(font: alternative-font, alert-secondary-color, body)),
+      height: 1fr,
+      width: 100%,
+    )
   }
   self = utils.merge-dicts(
     self,

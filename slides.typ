@@ -1,6 +1,8 @@
 #import "theme.typ": *
 #import "utils.typ": *
 
+#t.update(true)
+
 #let title = "Portfolio Presentation"
 #let subtitle = "Aalto University Game Design and Development Interview"
 #let author = "Herschel Pravin Pawar"

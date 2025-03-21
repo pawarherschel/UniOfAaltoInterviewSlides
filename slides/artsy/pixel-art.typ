@@ -1,16 +1,22 @@
 #import "../../utils.typ": *
 
-== Pixel Art
+== Pixel Art <ap:pa>
 #block(height: 100%, width: 100%)[
   #figure-image(
-    path: "resources/derpy charmander.gif",
+    path: "resources/pixel-art/banner.gif",
   )[Pixel Art of Charmander waving it's arms looking stupid (affectionate)]
 ]
 
-#block(height: 100%)[
+#pagebreak()
+
+#block(height: 1fr, width: 100%)[
   #columns(2)[
     === Rust for Lunch
-    #block(height: 1fr, width: 100%, figure-image(path: "resources/preview--rfl.png")[Rust for Lunch])
+    #block(
+      height: 1fr,
+      width: 100%,
+      figure-image(path: "resources/pixel-art/rfl.png")[Rust for Lunch Fan Art],
+    )
 
     #colbreak()
 
@@ -18,7 +24,7 @@
     #block(
       height: 1fr,
       width: 100%,
-      figure-image(path: "resources/preview--fractured-elements-logo.png")[Fractured Elements],
+      figure-image(path: "resources/pixel-art/fractured-elements.png")[Fractured Elements Logo],
     )
   ]
 ]

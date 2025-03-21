@@ -57,7 +57,7 @@
       ))
   )
 
-  show text: set text(size: 0.57em)
+  set text(size: 0.6em)
   show grid.cell: set grid.cell(breakable: false)
   block(height: 100%, width: 100%)[
     #grid(
