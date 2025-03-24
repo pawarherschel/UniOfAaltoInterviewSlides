@@ -81,16 +81,19 @@
       header: header,
       footer: footer,
       background: {
-        import "utils.typ": get-next-bg-img
-        get-next-bg-img()
-        place(
-          dy: -100%,
-          rect(
-            width: 100%,
-            height: 100%,
-            fill: self.colors.neutral-dark.transparentize(10%),
-          ),
-        )
+        import "utils.typ": bg
+        context if bg.get() {
+          import "utils.typ": get-next-bg-img
+          get-next-bg-img()
+          place(
+            dy: -100%,
+            rect(
+              width: 100%,
+              height: 100%,
+              fill: self.colors.neutral-dark.transparentize(10%),
+            ),
+          )
+        }
       },
     ),
   )
@@ -227,7 +230,12 @@
     import "utils.typ": alternative-font, alert-secondary-color
     block(
       align(top, text(font: alternative-font, alert-secondary-color, body, size: 1.3em)),
-      ..if body != none or body != [] or body != "" or body != " " {
+      ..if (
+        body == none,
+        body == [],
+        body == "",
+        body == " ",
+      ).all(it => it) {
         (
           height: 1fr,
           width: 100%,
@@ -240,16 +248,19 @@
     config-page(
       fill: self.colors.neutral-lightest,
       background: {
-        import "utils.typ": get-next-bg-img
-        get-next-bg-img()
-        place(
-          dy: -100%,
-          rect(
-            width: 100%,
-            height: 100%,
-            fill: self.colors.neutral-dark.transparentize(20%),
-          ),
-        )
+        import "utils.typ": bg
+        context if bg.get() {
+          import "utils.typ": get-next-bg-img
+          get-next-bg-img()
+          place(
+            dy: -100%,
+            rect(
+              width: 100%,
+              height: 100%,
+              fill: self.colors.neutral-dark.transparentize(20%),
+            ),
+          )
+        }
       },
     ),
   )
@@ -370,3 +381,15 @@
   body
 }
 
+#let speaker-note(mode: "typ", setting: it => it, note) = {
+  touying-fn-wrapper(
+    utils.speaker-note,
+    mode: mode,
+    setting: setting,
+    {
+      set text(size: 0.8em, hyphenate: false)
+      set par(justify: true, linebreaks: "optimized")
+      note
+    },
+  )
+}

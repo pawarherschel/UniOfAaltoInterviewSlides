@@ -15,8 +15,9 @@
 #let neutral-darkest = text-color
 
 #let default-font = "Atkinson Hyperlegible"
-#let alternative-font = "Nekonium"
+#let alternative-font = "JetBrainsMono NF"
 
+#let bg = state("bg", false)
 
 // src: https://sitandr.github.io/typst-examples-book/book/typstonomicon/extract_plain_text.html
 // original author: ntjess
@@ -78,6 +79,7 @@
   height: 1fr,
   width: auto,
   gap: 0.65em,
+  alt: none,
   caption,
 ) = {
   if type(path) != type(str) {
@@ -88,8 +90,9 @@
         fit: "contain",
         height: height,
         width: width,
+        ..if alt != none { (alt: alt) },
       ),
-      caption: [#caption #filepath(path)],
+      caption: [#caption #filepath(path) #if alt != none [(has alt text)]],
       gap: gap,
     )
   }
@@ -124,20 +127,6 @@
   ]
 ]
 
-#let github-link(owner: "pawarherschel", repo: str, preview: none) = [
-  #assert(type(repo) != type(str), message: "enter the repo name dumbass")
-  #link("https://github.com/" + owner + "/" + repo)[
-    #if preview == none [GitHub:#owner/#repo] else [#preview]
-  ] <links>
-]
-
-#let wikipedia-link(page: str, display) = [
-  #if type(page) != type(str) {
-    [#link(page)[Wikipedia:#page => #display] <links>]
-  }
-]
-
-
 #let blank-slide = {
   import "theme.typ": focus-slide
   focus-slide(config: (freeze-slide-counter: false))[
@@ -154,3 +143,28 @@
   ]
 }
 
+#let github-link(owner: "pawarherschel", repo: str, preview: none, first-commit: datetime) = {
+  assert(type(repo) != type(str), message: "enter the repo name dumbass")
+  assert(type(first-commit) == datetime)
+  [#[#link(
+    "https://github.com/" + owner + "/" + repo,
+    if preview == none [GitHub:#owner#sym.slash#repo] else [#preview],
+  )<links>] | First Commit: #first-commit.display()]
+}
+
+#let wikipedia-link(page: str, display) = {
+  assert(type(page) == str)
+  [#link("https://en.wikipedia.org/wiki/" + page)[Wikipedia:#page $==>$ #display]<links>]
+}
+
+#let youtube-link(title: str, creator: str, video-id: str) = {
+  [#link("https://www.youtube.com/watch?v=" + video-id)[YouTube:#video-id $==>$ #title $<==$ #creator]<links>]
+}
+
+#let steam-link(id: str, title) = {
+  [#link("https://store.steampowered.com/app/" + id)[Steam:#id $==>$ #title]<links>]
+}
+
+#let itch-io-link(username: "pawarherschel", id: str, title) = {
+  [#link("https://" + username + ".itch.io/" + id)[itch:#username:#id $==>$ #title]<links>]
+}
