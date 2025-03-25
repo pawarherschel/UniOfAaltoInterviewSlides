@@ -183,7 +183,7 @@
     config-common(freeze-slide-counter: true),
     config-page(
       background: {
-        image("resources/background.jpg", fit: "cover", width: 100%)
+        align(top + left, image("resources/background.jpg", fit: "cover", width: 100%))
         place(
           dy: -100%,
           rect(

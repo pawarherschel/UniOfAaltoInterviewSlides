@@ -23,6 +23,24 @@
   date: date,
 )
 
+#pdf.embed(
+  "slides.typ",
+  relationship: "source",
+  mime-type: "text/typst",
+)
+
+#pdf.embed(
+  "utils.typ",
+  relationship: "source",
+  mime-type: "text/typst",
+)
+
+#pdf.embed(
+  "theme.typ",
+  relationship: "source",
+  mime-type: "text/typst",
+)
+
 #show: theme.with(
   aspect-ratio: "16-9",
   config-colors(
@@ -39,7 +57,6 @@
     author: author,
     date: date,
   ),
-  // config-common(show-notes-on-second-screen: bottom),
   footer: [Jump: #quick-links.join(" ")],
 )
 
@@ -117,7 +134,14 @@
       .map(it => (
         "resources/backgrounds/" + str(it) + ".jpg"
       ))
-      .map(path => image(path))
+      .map(path => {
+        image(path)
+        pdf.embed(
+          path,
+          mime-type: "image/jpeg",
+          relationship: "data",
+        )
+      })
   )
 
   grid(
@@ -139,7 +163,6 @@
 #title-slide()
 
 = Introduction <introduction>
-
 #pagebreak()
 #grid(
   columns: 2,
@@ -192,16 +215,14 @@
 - @gd:lo #box(width: 1fr)[#repeat(gap: 1.5pt)[.]] November 2024
 
 == Godot Games <gd:gg>
-#speaker-note[
-  The first proper game engine I used was godot.\
+#pdfpc.speaker-note("The first proper game engine I used was godot.
   I tried to do something different everytime I made a game.
   + Pong: learned the game engine
   + Magical Marshmellow: Used audacity to record and edit a sound effect, drew all the sprites
   + Conway's Game of Life: Implemented the algorithm by copying from wikipedia
   + Meme Invaders: Made the whole game by myself without watching tutorial
   + Minesweeper: Implemented the flood fill algorithm without knowing the flood fill algorithm
-  + Pop The Lock" Used Krita's Vector layers for first time
-]
+  + Pop The Lock: Used Krita's Vector layers for first time")
 #{
   let godot-games = (
     (
@@ -681,6 +702,7 @@
   #block(height: 1fr, width: 100%)[
     #figure-image(
       path: "resources/pixel-art/banner.gif",
+      scaling: "pixelated",
     )[Pixel Art of Charmander waving it's arms looking stupid (affectionate)]
   ]
   #colbreak()
@@ -705,7 +727,10 @@
     #block(
       height: 1fr,
       width: 100%,
-      figure-image(path: "resources/pixel-art/rfl.png")[Rust for Lunch Fan Art],
+      figure-image(
+        path: "resources/pixel-art/rfl.png",
+        scaling: "pixelated",
+      )[Rust for Lunch Fan Art],
     )
 
     #colbreak()
@@ -714,7 +739,10 @@
     #block(
       height: 1fr,
       width: 100%,
-      figure-image(path: "resources/pixel-art/fractured-elements.png")[Fractured Elements Logo],
+      figure-image(
+        path: "resources/pixel-art/fractured-elements.png",
+        scaling: "pixelated",
+      )[Fractured Elements Logo],
     )
   ]
 ]

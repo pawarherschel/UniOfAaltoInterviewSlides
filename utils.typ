@@ -80,10 +80,12 @@
   width: auto,
   gap: 0.65em,
   alt: none,
+  scaling: "smooth",
   caption,
 ) = {
   if type(path) != type(str) {
     let path = path.replace("../", "")
+    let path = path.replace("./", "")
     figure(
       image(
         path,
@@ -91,9 +93,28 @@
         height: height,
         width: width,
         ..if alt != none { (alt: alt) },
+        scaling: scaling,
       ),
       caption: [#caption #filepath(path) #if alt != none [(has alt text)]],
       gap: gap,
+    )
+    pdf.embed(
+      path,
+      relationship: "data",
+      mime-type: if path.ends-with("png") {
+        "image/png"
+      } else if path.ends-with("gif") {
+        "image/gif"
+      } else if path.ends-with("jpeg") or path.ends-with("jpg") {
+        "image/jpeg"
+      } else if path.ends-with("svg") {
+        "image/svg+xml"
+      } else { panic("Unknown file type" + path) },
+      description: "caption: "
+        + plain-text(caption)
+        + " filepath: "
+        + path
+        + if alt != none { " has alt text: " + alt },
     )
   }
 }
@@ -113,7 +134,7 @@
       "resources/backgrounds/" + str(bg-img-ctr.get().at(0)) + ".jpg"
     )
 
-    image(path, fit: "cover", width: 100%)
+    align(top + left, image(path, fit: "cover", width: 100%))
   }
 }
 
