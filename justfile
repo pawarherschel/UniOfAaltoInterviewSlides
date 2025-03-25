@@ -1,5 +1,3 @@
-set quiet
-
 default: slides notes
 
 all: slides notes export
@@ -7,7 +5,7 @@ all: slides notes export
 font-path := '--font-path "D:\Sync\Projects\Assets\Fonts"'
 
 pdfpc:
-  typst query --root . ./slides.typ --field value --one "<pdfpc-file>" | jq | out-file -filepath .\slides.pdfpc -Encoding utf8
+  typst query --root . ./slides.typ --field value --one "<pdfpc-file>" > slides.pdfpc
 
 slides:
   typst compile slides.typ {{font-path}}
