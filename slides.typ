@@ -223,6 +223,9 @@
 == Godot Games <gd:gg>
 #pdfpc.speaker-note(
   plain-text[
+    = Godot Games
+    #linebreak()
+    #linebreak()
     The first proper game engine I used was godot.
     I tried to do something different everytime I made a game.
 
@@ -306,6 +309,9 @@
 == Fractured Elements <gd:fe>
 #pdfpc.speaker-note(
   plain-text[
+    = Fractured Elements
+    #linebreak()
+    #linebreak()
     Originally, the game was supposed to have 4 characters but due to time constrains, we weren't able to do it.
 
     The judge feedback is pretty positive, they mentioned that they were unsure about what caused them to change between the characters.
@@ -337,6 +343,9 @@
 
 #pdfpc.speaker-note(
   plain-text[
+    = Fractured Elements
+    #linebreak()
+    #linebreak()
     My biggest contribution to the game was the changing character mechanic. My aim was to have low coupling and high cohesion.
 
     Lets call the outermost shell, the character and the switching character, that is, the dwarf, and the elf, sub-characters. Coming from Godot I thought it would be easy, just create signals and connect them, and run function at a certain animation frame to spawn projectile. But, Unity was less friendly than I expected.
@@ -362,6 +371,9 @@
 
 #pdfpc.speaker-note(
   plain-text[
+    = Fractured Elements
+    #linebreak()
+    #linebreak()
     Years ago I heard somewhere about how Terraria handles weapons.
 
     They spawn a projectile with an initial position, and an initial speed. Everything else was handled by the projectile script. So, thats exactly how I did it.
@@ -399,6 +411,9 @@
 == Cosmos Conquerors <gd:cc>
 #pdfpc.speaker-note(
   plain-text[
+    = Cosmos Conquerors
+    #linebreak()
+    #linebreak()
     Cosmos Conquerors was my first game jam game. In the game, you are the swarm of enemies, and your objective is to survive against ever more powerful heros.
 
     I had quite a few ideas but I decided to first make the core game and then focus on the aesthetics and tweaks.
@@ -455,6 +470,9 @@
 === Spicing things up
 #pdfpc.speaker-note(
   plain-text[
+    = Cosmos Conquerors
+    #linebreak()
+    #linebreak()
     The twist was that you couldn't control which invader shoots when you press spacebar. The bullet was shot from a random invader. This made it so more invaders equals more health, but you're less likely to shoot from the invader you want.
 
     The hero gains more and more speed everytime it dies, eventually, it will catch up to the invaders and kill them all.
@@ -472,6 +490,9 @@
 == Bevy Pong<gd:bp>
 #pdfpc.speaker-note(
   plain-text[
+    = Bevy Pong
+    #linebreak()
+    #linebreak()
     Bevy is a game engine in rust which uses ECS architecture. I am interested in high performance compute, so, I wanted to learn how to use ECS. I had also heard good things about bevy, like, how its great at #quote(
     "progressive disclosure of complexity",
     attribution: "Chris Biscardi",
@@ -533,6 +554,9 @@
 
 #pdfpc.speaker-note(
   plain-text[
+    = Bevy Pong
+    #linebreak()
+    #linebreak()
     I originally wanted to add online multiplayer via websockets but while building proof of concept for the websocket, I encountered problems with the websocket library and I don't have the skills to troubleshoot it. I will revisit and continue it later.
 
     Also, it took me 3 tries to learn how to use ECS. I also want to use bevy to write compute shaders in WGSL.
@@ -589,6 +613,9 @@
 == Learn OpenGL<gd:lo>
 #pdfpc.speaker-note(
   plain-text[
+    = Learn OpenGL
+    #linebreak()
+    #linebreak()
     Coming from rust, where I rely a lot on tools like Clippy to reduce cognitive load, catch errors, use idiomatic code, dodge potential issues, etc, the tooling for C++ was not helpful at all. I tried to use CLang's lsp and CLion IDE, but they weren't anywhere as helpful as Clippy. I also couldn't explore and learn the way I do in Rust, by reading the documentation by hovering on the functions.
   ].trim(),
 )
@@ -625,6 +652,9 @@
 == Krita Palette Creator <ap:kp>
 #pdfpc.speaker-note(
   plain-text[
+    = Krita Palette Creator
+    #linebreak()
+    #linebreak()
     I made this project as I often wanted to pick colors from an image, but due to the shading and jpeg compression artifacts, it was hard to choose a representative color. I checked if Rosetta Code had the algorithm, and it didn't. I checked other languages, and Java was the most readable one, so I ported the java code almost line to line, and then contributed the code.
 
     I wanted a program which helped me pick distinct colors, while reducing the number of actual colors which are similar. Turns out, the algorithm isn't suitable for my usecase, but I still manage to use it.
@@ -664,6 +694,9 @@
 == Ray Tracing in Rust <ap:r>
 #pdfpc.speaker-note(
   plain-text[
+    = Ray Tracing in Rust
+    #linebreak()
+    #linebreak()
     One of my favorite type of content on youtube is some person optimizing a single aspect of a program until it's limit. I used this project as a testbed to write efficient code.
 
     I was following a tutorial written in some old version of rust. I used my knowledge of rust to write it in modern rust while trying my best to use good and idiomatic rust practices.
@@ -707,6 +740,9 @@
 == Kait <ap:k>
 #pdfpc.speaker-note(
   plain-text[
+    = Kait
+    #linebreak()
+    #linebreak()
     I made Kait to use as my vtuber persona. My aim was to make a simple countryside girl inspired by cottagecore who has a lot of heart motifs. I made or edited the textures in photoshop.
 
     While I ultimately didn't stream much, I'm still proud of the character I made.
@@ -731,6 +767,9 @@
 == Pixel Art <ap:pa>
 #pdfpc.speaker-note(
   plain-text[
+    = Pixel Art
+    #linebreak()
+    #linebreak()
     I made this adorable idiot while learning pixel art from a course I bought
   ].trim(),
 )
@@ -754,6 +793,9 @@
 
 #pdfpc.speaker-note(
   plain-text[
+    = Pixel Art
+    #linebreak()
+    #linebreak()
     The pixel art on left is for rust's mascot ferris the crab obtaining a sandwich. It was made for a monthly online rust meetup. I was planning speak in the meetup but the last meetup was december of last year.
 
     The pixel art on right is the logo I made for the Coventry University Summer School Game Jam. It's the elemental powers for the characters. If I wanted to continue the game, I would add the element for the other powers when I add them to the game.
@@ -851,6 +893,9 @@
 == Scanlation Work <ap:s>
 #pdfpc.speaker-note(
   plain-text[
+    = Scanlation Work
+    #linebreak()
+    #linebreak()
     Scanlation is the act of fan-made scanning, translation, and editing of comics from a language into another language
 
     I have read a lot of manga, and I was always curious about how hard it would be to clean and typeset manga pages. I did it to practice my editing and typesetting skills.
@@ -898,6 +943,9 @@
 
 #pdfpc.speaker-note(
   plain-text[
+    = Scanlation Work
+    #linebreak()
+    #linebreak()
     I cannot do the whole scanlation process. I would need to build up good will so artists don't mind me processing their art, learn and practice Japanese, learn about Japanese culture so I can translate more accurately, and then finally I can do what I originally wanted to do, that is, practice my editing and typesetting skills.
 
     So, I joined the "Danke fürs Lesen" scanlation group, and was able to work with people across timezones and be part of an inclusive community.
@@ -918,6 +966,9 @@
 == VRCX Insights <ngd:vi>
 #pdfpc.speaker-note(
   plain-text[
+    = VRCX Insights
+    #linebreak()
+    #linebreak()
     There's a concept called six degrees of separation which says that you are connected to any other person on earth by at most six people. One of my friends kept saying that "I know everyone" since I kept bumping into her in unexpected friend circles.
 
     So, I wanted a tool to see how people are connected directly and indirectly when I'm not part of the link. For example, if I know three people: X, Y, and Z, I wanted to see if X and Z are connected through Y. One of the other goals was to identify social circles within the community.
@@ -958,6 +1009,9 @@
 == Booth Archiver <ngd:ba>
 #pdfpc.speaker-note(
   plain-text[
+    = Booth Archiver
+    #linebreak()
+    #linebreak()
     I made this project to learn rust by creating a practical project. It uses all the available threads. I learnt how to use AMD uPerf and flamegraph to find out the bottleneck. I also had to learn how to use a debugger for this project. I eventually found out that I keep running into deadlock situations while consolidating data from the threads
   ].trim(),
 )
@@ -978,6 +1032,9 @@
 == Real-Time WebSocket Synchronization with Durable Objects <ngd:ws>
 #pdfpc.speaker-note(
   plain-text[
+    = Real-Time WebSocket Synchronization with Durable Objects
+    #linebreak()
+    #linebreak()
     Very dumb name, I know. I just used this project to learn how to use websockets in their quote-on-quote native environment, that is, the web browser.
 
     I chose websockets instead of UDP as it's easier to use in browser and I'm not even sure if you can use UDP sockets directly. Also, I just wanted to use cloudflare's durable objects.
@@ -1026,6 +1083,9 @@ Therefore, Durable Objects enable stateful serverless applications.",
 == Brainfuck Compiler with Cranelift <ngd:bf>
 #pdfpc.speaker-note(
   plain-text[
+    = Brainfuck Compiler with Cranelift
+    #linebreak()
+    #linebreak()
     The only reason this exists is because I wanted to use cranelift and compile code to native.
 
     Aside from creating for the sake of creating, I wanted to have some experience with compilers as I was going to attend a meetup in Banglore hosted by Bosch. One of their lead engineers is creating a the RISC-V compilation target for Cranelift.
@@ -1125,6 +1185,9 @@ Just a quick overview :3
 = Conclusion <c>
 #pdfpc.speaker-note(
   plain-text[
+    = Conclusion
+    #linebreak()
+    #linebreak()
     I wanted to share this quote from Steve Jobs, which beautifully captures my philosophy towards creativity. He talks about how creativity isn't about inventing something entirely new out of thin air, but rather about connecting existing experiences and ideas in new ways.
 
     My project topics are very diverse, but I belive that when the time comes, they will all connect in a beautiful way. It's very exciting when I can apply knowledge I learned in one project helps me in another project.
@@ -1140,6 +1203,9 @@ Just a quick overview :3
 == Why Rust?
 #pdfpc.speaker-note(
   plain-text[
+    = Why Rust?
+    #linebreak()
+    #linebreak()
     People are tired of hearing rust is better due to memory safety, while yes, that's good, it's not the only reason rust is good. For me, rust was better for the reasons on right.
   ].trim(),
 )
