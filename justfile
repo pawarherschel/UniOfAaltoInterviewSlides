@@ -1,5 +1,4 @@
-default:
-  watchexec --filter "typ" just all
+default: slides notes
 
 all: slides notes export
 
