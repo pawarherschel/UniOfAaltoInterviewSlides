@@ -189,7 +189,7 @@
 - @gd:fe #box(width: 1fr)[#repeat(gap: 1.5pt)[.]] July 2024
 - @gd:cc #box(width: 1fr)[#repeat(gap: 1.5pt)[.]] July 2023
 - @gd:bp #box(width: 1fr)[#repeat(gap: 1.5pt)[.]] October 2024
-- @gd:lo #box(width: 1fr)[#repeat(gap: 1.5pt)[.]] UNKNOWN
+- @gd:lo #box(width: 1fr)[#repeat(gap: 1.5pt)[.]] November 2024
 
 == Godot Games <gd:gg>
 #speaker-note[
