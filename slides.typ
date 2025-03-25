@@ -1,5 +1,6 @@
 #import "theme.typ": *
 #import "utils.typ": *
+#import "@preview/oasis-align:0.2.0": *
 
 #let title = "Portfolio Presentation"
 #let subtitle = "Aalto University Game Design and Development Interview"
@@ -115,20 +116,28 @@
 #set enum(tight: true)
 
 #show math.equation: set text(font: "STIX Two Math")
-#set text(size: 0.9em)
 
 
 #import "@preview/codly:1.2.0": *
 #show: codly-init.with()
 
 #import "@preview/codly-languages:0.1.8": *
-#codly(languages: codly-languages)
 #codly(
   languages: (
-    rust: (name: "Rust", icon: "🦀", color: rgb("#CE412B")),
+    rust: (
+      name: "Rust",
+      icon: codly-languages.rust.icon,
+      color: rgb("#CE412B"),
+    ),
   ),
   lang-fill: none,
   zebra-fill: alert-primary-color.oklab().lighten(-40%).transparentize(80%),
+)
+
+#import "@preview/easy-typography:0.1.0": *
+#show: easy-typography.with(
+  body-size: 15pt,
+  fonts: (heading: alternative-font, body: default-font),
 )
 
 #title-slide()
@@ -159,6 +168,7 @@
 = Outline <outline>
 #slide(config: (freeze-slide-counter: true))[
   #set page(footer: none)
+  #set text(font: alternative-font)
   #align(top)[
     #outline(title: none)
   ]
@@ -179,36 +189,35 @@
     #figure-image(path: "resources/me.png")[Image of me]
   ],
   align(left + horizon)[
-    #text(size: 1.8em)[
-      #grid(
-        rows: 1,
-        columns: 2,
-        column-gutter: 2%,
-        image("resources/kibty.svg", height: 3em),
-        align(left + horizon)[
-          #alert[Herschel Pravin Pawar]
+
+    #oasis-align(
+      int-dir: -1,
+      image("resources/kibty.svg", fit: "contain"),
+      box(
+        inset: 10pt,
+        text(size: 1.9em)[
+          *Herschel Pravin Pawar*
           #linebreak()
           #text(font: alternative-font)[#link("https://sakurakat.systems")[sakurakat.systems] <links>]
         ],
-      )
-    ]
+      ),
+    )
     #align(bottom)[
       #par(justify: true)[
         Everything you see in this presentation --- scripts, links, and images --- are a part of a Typst document available freely on GitHub under a public domain licence.
       ]
-      #text(size: 0.95em)[
-        #grid(
-          rows: 1,
-          columns: 2,
-          align: left + horizon,
-          column-gutter: 2%,
-          image("resources/cc.logo.svg", height: 1em),
+      #line(length: 100%, stroke: alert-secondary-color)
+      #oasis-align(
+        int-dir: -1,
+        image("resources/cc.logo.svg", width: 100%),
+        box(
+          inset: 10pt,
           github-link(
             repo: "UniOfAaltoInterviewSlides",
             first-commit: datetime(day: 19, month: 3, year: 2025),
           ),
-        )
-      ]
+        ),
+      )
     ]
   ],
 )
@@ -294,7 +303,7 @@
       ))
   )
 
-  set text(size: 0.6em)
+  set text(size: 0.8em)
   show grid.cell: set grid.cell(breakable: false)
   block(height: 100%, width: 100%)[
     #grid(
@@ -325,7 +334,6 @@
   ]
   #colbreak()
   #block()[
-    #set text(size: 0.85em)
     #quote(
       "Visually nice platformer game with a pixel art approach and switching characters that allow either melee or ranged attacks. Multiple levels make it interesting and force the player to master their jumping and attacking skills. There is a final boss for the finale. One improvement I would suggest is that I was unsure what caused me to change between the characters - I was not sure if it was timed, depending on where I was in the level or a button press. Well done to all involved in the game and the hard work you put into it!",
       attribution: [Anonymous judge feedback],
@@ -387,25 +395,22 @@
   ]
 
   #colbreak()
+  === Key Points
+  - Core Game Mechanics
+  - Character Transition System
+  - Attack Mechanic (thanks #[#link("https://www.terraria.org")[Terraria]<links>])
+    - Hammer (melee) for Dawrf
+    - Bow and Arrow (ranged) for Elf
 
-  #block(height: 1fr)[
-    === Key Points
-    - Core Game Mechanics
-    - Character Transition System
-    - Attack Mechanic (thanks #[#link("https://www.terraria.org")[Terraria]<links>])
-      - Hammer (melee) for Dawrf
-      - Bow and Arrow (ranged) for Elf
+  === Technologies Used
+  - Unity
 
-    === Technologies Used
-    - Unity
-
-    === Links
-    - #github-link(
-        repo: "CovUniGJ2024",
-        first-commit: datetime(day: 22, month: 7, year: 2024),
-      )
-    - #itch-io-link(id: "fractured-elements")[Fractured Elements]
-  ]
+  === Links
+  - #github-link(
+      repo: "CovUniGJ2024",
+      first-commit: datetime(day: 22, month: 7, year: 2024),
+    )
+  - #itch-io-link(id: "fractured-elements")[Fractured Elements]
 ]
 
 == Cosmos Conquerors <gd:cc>
@@ -422,47 +427,41 @@
   ].trim(),
 )
 #columns(2)[
-  #text(size: 0.7em)[
-    #block(
-      height: 2fr,
-      width: 100%,
-      figure-image(path: "resources/cosmos-conquerors/screenshot.png")[Main Mechanic: Roles Reversed],
-    )
-    #block(
-      height: 1fr,
-      width: 100%,
-      figure-image(
-        path: "resources/cosmos-conquerors/comment 1.png",
-        alt: "Cool concept and you made it work! More enemies and a better control of the ships and what ship would shoot would be nice",
-      )[Comment by "Gabriel Toschi"],
-    )
-    #block(
-      height: 1fr,
-      width: 100%,
-      figure-image(
-        path: "resources/cosmos-conquerors/comment 2.png",
-        alt: "Interesting concept! More variations in the future would be great!",
-      )[Comment by "Zimizeh"],
-    )
-  ]
+  #block(
+    height: 2fr,
+    width: 100%,
+    figure-image(path: "resources/cosmos-conquerors/screenshot.png")[Main Mechanic: Roles Reversed],
+  )
+  #block(
+    height: 1fr,
+    width: 100%,
+    figure-image(
+      path: "resources/cosmos-conquerors/comment 1.png",
+      alt: "Cool concept and you made it work! More enemies and a better control of the ships and what ship would shoot would be nice",
+    )[Comment by "Gabriel Toschi"],
+  )
 
   #colbreak()
+  #block(
+    height: 1fr,
+    width: 100%,
+    figure-image(
+      path: "resources/cosmos-conquerors/comment 2.png",
+      alt: "Interesting concept! More variations in the future would be great!",
+    )[Comment by "Zimizeh"],
+  )
+  === Key Points
+  - Solo Development
 
-  #block(height: 1fr)[
+  === Technologies Used
+  - Godot
 
-    === Key Points
-    - Solo Development
-
-    === Technologies Used
-    - Godot
-
-    === Links
-    - #github-link(
-        repo: "GMTK2023",
-        first-commit: datetime(day: 8, month: 7, year: 2023),
-      )
-    - #itch-io-link(id: "cosmos-conquerors")[Cosmos Conquerors]
-  ]
+  === Links
+  - #github-link(
+      repo: "GMTK2023",
+      first-commit: datetime(day: 8, month: 7, year: 2023),
+    )
+  - #itch-io-link(id: "cosmos-conquerors")[Cosmos Conquerors]
 ]
 
 #pagebreak()
@@ -503,7 +502,7 @@
   ].trim(),
 )
 #columns(2)[
-  #set text(size: 0.75em)
+  #set text(size: 0.95em)
   ```rust
   // taken from: @/src/ball.rs
 
@@ -565,7 +564,7 @@
   ].trim(),
 )
 #columns(2)[
-  #text(size: 0.75em)[
+  #text(size: 0.95em)[
     ```rust
     // taken from: @/src/lib.rs
 
@@ -662,19 +661,18 @@
 )
 #columns(2)[
   #block(height: 1fr, width: 100%)[
-    #set text(size: 0.8em)
-    #block(width: 100%, height: 3fr)[
+    #block(width: 100%, height: 1fr)[
       #figure-image(path: "resources/krita-palette-creator/original.png")[Original Image]
     ]
-    #block(width: 100%, height: 4fr)[
-      #figure-image(path: "resources/krita-palette-creator/processed.png")[Quantized Image]
-    ]
     #block(width: 100%, height: 1fr)[
-      #figure-image(path: "resources/krita-palette-creator/palette.png")[Colors Used]
+      #figure-image(path: "resources/krita-palette-creator/processed.png")[Quantized Image]
     ]
   ]
 
   #colbreak()
+  #block(width: 100%, height: 1fr)[
+    #figure-image(path: "resources/krita-palette-creator/palette.png")[Colors Used]
+  ]
   === Key Points
   - Implemented color quantization by using median cut algorithm (Ported the Java code)
 
@@ -922,17 +920,19 @@
       #v(1fr)
       #line(length: 100%, stroke: alert-primary-color)
       #v(1fr)
-      Original Title: 助けた少女が吸血鬼だった医者の話。
+      Original Title: #text(font: "Naganoshi")[助けた少女が吸血鬼だった医者の話。]
       #v(1fr)
       #line(length: 100%, stroke: alert-primary-color)
       #v(1fr)
-      Translated Title: The Story of a Doctor Who Saved a Girl Who Turned Out to Be a Vampire
+      #par(justify: false)[Translated Title: The Story of a Doctor Who Saved a Girl Who Turned Out to Be a Vampire]
       #v(1fr)
       #line(length: 100%, stroke: alert-primary-color)
       #v(1fr)
-      Original By: Tsukinami Kousuke
+      Original By: #linebreak()
+      Tsukinami Kousuke
       #v(1fr)
-      Original at: #[#link("https://x.com/tuki_nami/status/1224267670037483520")[Twitter:tuki_nami]<links>]
+      Original at: #linebreak()
+      #[#link("https://x.com/tuki_nami/status/1224267670037483520")[Twitter:tuki_nami]<links>]
       #v(1fr)
       #line(length: 100%, stroke: alert-primary-color)
     ],
@@ -1044,19 +1044,16 @@
 )
 #columns(2)[
 
-  #text(size: 0.85em)[
-    #quote(
-      "Durable Objects provide a building block for stateful applications and distributed systems.
+  #quote(
+    "Durable Objects provide a building block for stateful applications and distributed systems.
 
 Use Durable Objects to build applications that need coordination among multiple clients, like collaborative editing tools, interactive chat, multiplayer games, and deep distributed systems, without requiring you to build serialization and coordination primitives on your own.
 
 ...omitted...
 
 Therefore, Durable Objects enable stateful serverless applications.",
-      attribution: [#link("https://developers.cloudflare.com/durable-objects/")[Cloudflare Durable Objects Documentation]<links>],
-    )
-  ]
-
+    attribution: [#link("https://developers.cloudflare.com/durable-objects/")[Cloudflare Durable Objects Documentation]<links>],
+  )
   #colbreak()
 
   === Key Points
@@ -1193,7 +1190,7 @@ Just a quick overview :3
     My project topics are very diverse, but I belive that when the time comes, they will all connect in a beautiful way. It's very exciting when I can apply knowledge I learned in one project helps me in another project.
   ].trim(),
 )
-#text(size: 0.7em)[
+#text(size: 0.8em)[
   #quote(
     "Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while. That's because they were able to connect experiences they've had and synthesize new things. And the reason they were able to do that was that they've had more experiences or they have thought more about their experiences than other people. Unfortunately, that's too rare a commodity. A lot of people in our industry haven't had very diverse experiences. So they don't have enough dots to connect, and they end up with very linear solutions without a broad perspective on the problem. The broader one's understanding of the human experience, the better design we will have.",
     attribution: [Steve Jobs],
@@ -1239,7 +1236,6 @@ Just a quick overview :3
 == List of Images
 #align(top + left)[
   #set enum(tight: true)
-  #set text(size: 0.9em)
   #context {
     for figure in query(figure.where(kind: image)) {
       let caption = figure.caption
@@ -1249,7 +1245,7 @@ Just a quick overview :3
         - #[
             #box(caption)
             #box(width: 1fr, repeat(gap: 1.5pt)[.])
-            #text(size: 1.5em, link(figure.location())[#page])
+            #link(figure.location())[#page]
           ]
       ]
     }
@@ -1259,7 +1255,6 @@ Just a quick overview :3
 == List of Tables
 
 #align(top + left)[
-  #set text(0.9em)
   #set enum(tight: true)
   #context {
     for figure in query(figure.where(kind: table)) {
@@ -1270,7 +1265,7 @@ Just a quick overview :3
         - #[
             #box(caption)
             #box(width: 1fr, repeat(gap: 1.5pt)[.])
-            #text(size: 1.5em, link(figure.location())[#page])
+            #link(figure.location())[#page]
           ]
       ]
     }

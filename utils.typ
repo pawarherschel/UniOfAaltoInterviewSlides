@@ -61,8 +61,9 @@
   let file-at = "preview file".codepoints().map(c => [#sym.wj#c]).join()
   let full-file-at = "original file".codepoints().map(c => [#sym.wj#c]).join()
   let joiner = [~#sym.wj\@#sym.wj/]
+  set par(justify: false)
   if full-file == none {
-    text(size: 0.75em)[*#linebreak()#full-file-at#sym.zws#joiner#file*]
+    text(size: 0.75em)[*#full-file-at#sym.zws#joiner#file*]
   } else {
     [
       #linebreak()
@@ -95,7 +96,7 @@
         ..if alt != none { (alt: alt) },
         scaling: scaling,
       ),
-      caption: [#caption #filepath(path) #if alt != none [(has alt text)]],
+      caption: [#caption#filepath(path)],
       gap: gap,
     )
     pdf.embed(
@@ -170,7 +171,7 @@
   [#[#link(
     "https://github.com/" + owner + "/" + repo,
     if preview == none [GitHub:#owner#sym.slash#repo] else [#preview],
-  )<links>] | First Commit: #first-commit.display()]
+  )<links>]#linebreak()| First Commit: #first-commit.display()]
 }
 
 #let wikipedia-link(page: str, display) = {
