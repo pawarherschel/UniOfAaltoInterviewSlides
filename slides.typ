@@ -23,31 +23,31 @@
   title: title + " - " + subtitle,
   date: date,
 )
+#context if not bg.get() {
+  pdf.embed(
+    "slides.typ",
+    relationship: "source",
+    mime-type: "text/typst",
+  )
 
-#pdf.embed(
-  "slides.typ",
-  relationship: "source",
-  mime-type: "text/typst",
-)
+  pdf.embed(
+    "utils.typ",
+    relationship: "source",
+    mime-type: "text/typst",
+  )
 
-#pdf.embed(
-  "utils.typ",
-  relationship: "source",
-  mime-type: "text/typst",
-)
+  pdf.embed(
+    "theme.typ",
+    relationship: "source",
+    mime-type: "text/typst",
+  )
 
-#pdf.embed(
-  "theme.typ",
-  relationship: "source",
-  mime-type: "text/typst",
-)
-
-#pdf.embed(
-  "slides.pdfpc",
-  relationship: "supplement",
-  mime-type: "application/json",
-)
-
+  pdf.embed(
+    "slides.pdfpc",
+    relationship: "supplement",
+    mime-type: "application/json",
+  )
+}
 #show: theme.with(
   aspect-ratio: "16-9",
   config-colors(
@@ -110,7 +110,7 @@
 
 
 #show ref: it => {
-  link(it.target)[#plain-text(it.element)]
+  link(it.target)[#plain-text(it.element) (#context{locate(it.target).page()})]
 }
 
 #set enum(tight: true)
@@ -151,11 +151,13 @@
       ))
       .map(path => {
         image(path)
-        pdf.embed(
-          path,
-          mime-type: "image/jpeg",
-          relationship: "data",
-        )
+        context if not bg.get() {
+          pdf.embed(
+            path,
+            mime-type: "image/jpeg",
+            relationship: "data",
+          )
+        }
       })
   )
 
@@ -775,7 +777,6 @@
   #block(height: 1fr, width: 100%)[
     #figure-image(
       path: "resources/pixel-art/banner.gif",
-      scaling: "pixelated",
     )[Pixel Art of Charmander waving it's arms looking stupid (affectionate)]
   ]
   #colbreak()
@@ -805,10 +806,7 @@
     #block(
       height: 1fr,
       width: 100%,
-      figure-image(
-        path: "resources/pixel-art/rfl.png",
-        scaling: "pixelated",
-      )[Rust for Lunch Fan Art],
+      figure-image(path: "resources/pixel-art/rfl.png")[Rust for Lunch Fan Art],
     )
 
     #colbreak()
@@ -817,10 +815,7 @@
     #block(
       height: 1fr,
       width: 100%,
-      figure-image(
-        path: "resources/pixel-art/fractured-elements.png",
-        scaling: "pixelated",
-      )[Fractured Elements Logo],
+      figure-image(path: "resources/pixel-art/fractured-elements.png")[Fractured Elements Logo],
     )
   ]
 ]

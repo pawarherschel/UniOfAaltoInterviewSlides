@@ -81,7 +81,6 @@
   width: auto,
   gap: 0.65em,
   alt: none,
-  scaling: "smooth",
   caption,
 ) = {
   if type(path) != type(str) {
@@ -94,29 +93,30 @@
         height: height,
         width: width,
         ..if alt != none { (alt: alt) },
-        scaling: scaling,
       ),
       caption: [#caption#filepath(path)],
       gap: gap,
     )
-    pdf.embed(
-      path,
-      relationship: "data",
-      mime-type: if path.ends-with("png") {
-        "image/png"
-      } else if path.ends-with("gif") {
-        "image/gif"
-      } else if path.ends-with("jpeg") or path.ends-with("jpg") {
-        "image/jpeg"
-      } else if path.ends-with("svg") {
-        "image/svg+xml"
-      } else { panic("Unknown file type" + path) },
-      description: "caption: "
-        + plain-text(caption)
-        + " filepath: "
-        + path
-        + if alt != none { " has alt text: " + alt },
-    )
+    context if not bg.get() {
+      pdf.embed(
+        path,
+        relationship: "data",
+        mime-type: if path.ends-with("png") {
+          "image/png"
+        } else if path.ends-with("gif") {
+          "image/gif"
+        } else if path.ends-with("jpeg") or path.ends-with("jpg") {
+          "image/jpeg"
+        } else if path.ends-with("svg") {
+          "image/svg+xml"
+        } else { panic("Unknown file type" + path) },
+        description: "caption: "
+          + plain-text(caption)
+          + " filepath: "
+          + path
+          + if alt != none { " has alt text: " + alt },
+      )
+    }
   }
 }
 
